@@ -76,14 +76,25 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="bg-[#050505] min-h-screen text-[#EAEAEA] font-sans selection:bg-[#CCFF00] selection:text-black">
+    <div className="bg-[#050505] min-h-screen text-[#EAEAEA] font-sans selection:bg-[#CCFF00] selection:text-black overflow-hidden">
+      {/* Cinematic Entrance Curtain */}
+      <div 
+        className={`fixed inset-0 z-[100] bg-[#050505] flex items-center justify-center transition-transform duration-[1.5s] cubic-bezier(0.76, 0, 0.24, 1) ${mounted ? '-translate-y-full' : 'translate-y-0'}`}
+      >
+        <div className="overflow-hidden">
+            <h1 className={`text-6xl md:text-8xl font-black uppercase tracking-tighter text-white transition-transform duration-1000 delay-300 ${mounted ? '-translate-y-full opacity-0' : 'translate-y-0 opacity-100'}`}>
+              SET.NYC
+            </h1>
+        </div>
+      </div>
+
       {/* Noise Overlay for Texture */}
       <div className="fixed inset-0 opacity-[0.03] pointer-events-none z-50 mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
 
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-40 px-6 py-6 flex justify-between items-start mix-blend-difference text-white">
+      <nav className={`fixed top-0 w-full z-40 px-6 py-6 flex justify-between items-start mix-blend-difference text-white opacity-0 ${mounted ? 'animate-fade-in delay-1000' : ''}`}>
         <div className="flex flex-col leading-none uppercase tracking-tighter text-sm font-mono">
-          <span>BOKEH</span>
+          <span>SET.NYC</span>
           <span className="opacity-50">Est. 2025</span>
         </div>
         <div className="hidden md:flex gap-12 text-xs font-medium tracking-widest uppercase">
@@ -112,21 +123,22 @@ export default function Home() {
             src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?q=80&w=2500&auto=format&fit=crop"
             alt="NYC Background"
             fill
-            className="object-cover opacity-40 grayscale hover:grayscale-0 transition-all duration-[2s] ease-out scale-105"
+            className={`object-cover opacity-40 grayscale hover:grayscale-0 transition-all duration-[2s] ease-out scale-105 ${mounted ? 'animate-scale-reveal' : 'opacity-0'}`}
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#050505]/50 to-[#050505]"></div>
         </div>
 
-        <div className="relative z-10 w-full max-w-[90vw] text-center">
-          <h1 className="text-[12vw] leading-[0.85] font-black tracking-tighter uppercase mix-blend-screen opacity-90">
+        <div className="relative z-10 w-full max-w-[90vw] text-center overflow-hidden">
+          <h1 className={`text-[12vw] leading-[0.85] font-black tracking-tighter uppercase mix-blend-screen opacity-0 ${mounted ? 'animate-reveal-up delay-500' : ''}`}>
+            Cinema <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-neutral-500">
-              Bokeh
+              Verité
             </span>
           </h1>
         </div>
 
-        <div className="absolute bottom-12 left-6 right-6 flex justify-between items-end text-xs font-mono uppercase tracking-widest text-white/60">
+        <div className={`absolute bottom-12 left-6 right-6 flex justify-between items-end text-xs font-mono uppercase tracking-widest text-white/60 opacity-0 ${mounted ? 'animate-fade-in delay-1000' : ''}`}>
           <div className="max-w-xs">
             <p>Curated film locations</p>
             <p>New York City, NY</p>
